@@ -3,10 +3,6 @@
 <h5>Listing Videos</h5>
 <!-- %
 =begin %-->
-<%= link_to new_video_path, :class => 'btn-floating btn-large waves-effect waves-light red' do %>
-  <!--<i class="mdi-content-add"></i>-->
-  <i class="material-icons">add</i>
-<% end %>
 <ul class="collapsible" data-collapsible="accordion">
   <% @videos.each do |video| %>
     <li>
@@ -16,16 +12,20 @@
         <span class="right">
           <%= link_to edit_video_path(video) do %>
             <!--<i class="mdi-content-create"></i>-->
-            <i class="large material-icons">mode_edit</i>
+            <i class="large material-icons">Edit</i>
           <% end %>
           <%= link_to video, method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <i class="mdi-notification-event-busy"></i>
+            <i class="mdi-notification-event-busy">Delete</i>
           <% end %>
         </span>
       </div>
-      <div class="collapsible-body"><p><%= video.description %></p></div>
+      <!--<div class="collapsible-body"><p><!--%= video.description %></p></div>-->
     </li>
   <% end %>
 </ul>
+<%= link_to new_video_path, :class => 'btn-floating btn-large waves-effect waves-light red' do %>
+  <!--<i class="mdi-content-add"></i>-->
+  <i class="material-icons">Upload new wistia hosting video</i>
+<% end %>
 <!-- %
 =end %-->

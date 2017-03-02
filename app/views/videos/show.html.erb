@@ -1,35 +1,21 @@
-<p id="notice"><%= notice %></p>
-
-<!--https://wistia.com/doc/embed-links-->
-<!--Simple Video Replacement Example-->
-<!--<script charset="ISO-8859-1" src="//fast.wistia.com/assets/external/E-v1.js" async></script>-->
-<!--<div class="wistia_embed wistia_async_30q7n48g4f" style="height:360px;width:640px">&nbsp;</div>-->
-<!--<a href="#wistia_30q7n48g4f">Make French Toast</a><br/>-->
-<!--<a href="#wistia_342jss6yh5">Wistia Team Intro</a><br/>-->
-
+<!--<p id="notice"><!--%= notice %></p>-->
+<div class="container-fluid">
 <div class="row">
-  <div class="col m3">
+  <div class="col-sm-1">
      <div class="collection">
        <% @videos.each do |video| %>
-         <%= link_to video.title, video, :class => "collection-item" %>
+         <%= link_to video.title, video, :class => "collection-item" %></br>
        <% end %>
       </div>
   </div>
-  <div class="col m9">
+  <div class="col-sm-11">
+  <div class="box">
     <div class="card blue-grey darken-1">
       <div class="card-image">
-<div class="wistia_embed wistia_async_<%= @video.wistia %>" style="height:360px;width:640px">&nbsp;</div>
-     <!--<div><!--%= video_tag "movie.mp4", :size => "200x200", :controls => true %>-->
-        <div id="wistia_<%= @video.wistia %>">
-      </div>
+        <div class="wistia_embed wistia_async_<%= @video.wistia %>" style="height:320px;width:420px">&nbsp;</div>
+        </div>
       </div>
       <div class="card-content white-text">
-        <button class="btn btn-primary" onclick="setPlaySpeed(0.75)">0.75x</button>
-        <button class="btn btn-primary" onclick="setPlaySpeed(1)">1x</button>
-        <button class="btn btn-primary" onclick="setPlaySpeed(1.25)">1.25x</button>
-        <button class="btn btn-primary" onclick="setPlaySpeed(1.5)">1.5x</button>
-        <button class="btn btn-primary" onclick="setPlaySpeed(2)">2x</button>
-        <br/>
         <span class="card-title"><%= @video.title %></span>
           <p><%= @video.description %></p>
       </div>
@@ -41,6 +27,8 @@
       </div>
     </div>    
   </div>
+  </div>
+</div>
 </div>
 
 <!--<script src="http://fast.wistia.net/static/E-v1.js"></script>-->
@@ -53,7 +41,4 @@
     videoQuality: "hd-only",
     videoFoam: true
   });
-  function setPlaySpeed(speed) {
-    wistiaEmbed.playbackRate(speed);
-  }
 </script>
