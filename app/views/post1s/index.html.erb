@@ -1,0 +1,76 @@
+<p id="notice"><%= notice %></p>
+
+<h4>Posts</h4>
+<% img_arr = ["logos/nodeJs.png","logos/quiet_place.jpg","logos/cloud.png","logos/tree_on_the_bank.jpg",
+"logos/pythonDjango.png","logos/tree_on_the_bank.jpg","logos/ROR.png","logos/burney_falls.jpg","logos/crooked_river.jpg"] %>
+<% img_idx=0 %>
+<%= form_tag post1s_path, method: :get do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= button_tag "Search Title", name: nil %>
+  </p>
+<% end %>
+<!--<p><!--%= link_to "Advanced Search", new_search_path %></p>-->
+<table class="pretty">
+  <thead>
+    <tr>
+      <!--<th><!--%= sortable "total_votes" %></th>-->
+      <th>Vote</th>
+      <th>Like</th>
+      <th>Dislike</th>      
+      <th><%= sortable "title" %></th>
+      <th>File</th>
+      <th>Content</th>
+      <th>Category</th>
+      <th>Author</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @post1s.each do |post1| %>
+      <% img_idx=rand(0...8) %>
+      <!--% img_idx = img_idx % 5 %>-->
+      <!--<div class="title_class">  -->
+      <tr>
+        <td><%= post1.total_votes %></td>
+        <td>
+          <%= link_to vote_post1_path(post1, vote: true), class: "btn btn-primary", method: 'post' do %>
+          O
+          <% end %>
+        </td>
+        <td>
+          <%= link_to vote_post1_path(post1, vote: false), class: "btn btn-danger", method: 'post' do %>
+          X
+          <% end %>
+        </td>        
+        <td><%= post1.title %></td>
+        <% if (post1.title=="MISC") %>
+          <td><%= video_tag "logos/movie.mp4", :size => "120x120", :controls => true %></td>
+        <% else %>    
+          <td><%= image_tag(img_arr[img_idx],width:'120px',length:'120px') %></td>
+        <% end %>  
+        <td><%= post1.content %></td>
+        <td><%= Category.find_by_id(post1.category_id).title %></td>
+        <td><%= User.find_by_id(post1.user_id).name %></td>
+        <td><%= link_to 'Show', post1 , class: "btn btn-success" %></td>
+        <% if logged_in? %>        
+          <% if current_user.name == "admin" %>
+            <td><%= link_to 'Edit', edit_post1_path(post1), class: "btn btn-warning" %></td>
+            <td><%= link_to 'Destroy', post1, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+          <% end %>    
+        <% end %>    
+      </tr>
+      <!--</div>-->
+    <% end %>
+  </tbody>
+</table>
+<div>
+  <%= will_paginate %>
+</div>
+<br>
+<% if logged_in? %>        
+  <% if current_user.name == "admin" %>
+    <%= link_to 'New Post', new_post1_path, class: "btn btn-success" %>
+  <% end %>
+<% end %>
