@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :videos
   resources :emailusers
   resources :articles, only: [:index, :new, :create, :destroy]
   # root "articles#index"  
