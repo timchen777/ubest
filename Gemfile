@@ -7,6 +7,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'will_paginate', '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
 
+gem 'omniauth-facebook', '~> 1.4.1'
 
 # file uploader
 gem 'carrierwave', '~> 0.9'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170302103037) do
+ActiveRecord::Schema.define(version: 20170303032642) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "name"
@@ -48,6 +48,16 @@ ActiveRecord::Schema.define(version: 20170302103037) do
     t.string   "login"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "fbusers", force: :cascade do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "post1s", force: :cascade do |t|
