@@ -60,7 +60,8 @@ Rails.application.routes.draw do
   get "ref1013", to: redirect("https://code4startup.com/subscriptions")
   get "ref1014", to: redirect("https://code4startup.com/projects/uber-app-for-food-with-python-django-and-swift?code=SPECIAL")
   get "ref1015", to: redirect("https://richonrails.com/articles/facebook-authentication-in-ruby-on-rails")
-  
+  get "ref1016", to: redirect("https://github.com/mkdynamic/omniauth-facebook")
+
   get "ref4",to: redirect("http://railsforzombies.org")
   get "ref5", to: redirect("https://thoughtbot.com/upcase/rails")
   get "ref6", to: redirect("http://guides.rubyonrails.org/")
