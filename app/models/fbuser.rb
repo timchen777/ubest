@@ -2,7 +2,8 @@
 # in our database, and then update or create the user as necessary. 
 class Fbuser < ActiveRecord::Base 
   def self.from_omniauth(auth)
-    where(auth.slice(:provider, :uid)).first_or_initialize.tap do |fbuser|
+    # where(auth.slice(:provider, :uid)).first_or_initialize.tap do |fbuser|
+    where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
       fbuser.provider = auth.provider
       fbuser.uid = auth.uid
       fbuser.name = auth.info.name
