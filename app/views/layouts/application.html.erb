@@ -19,6 +19,8 @@
       <!--Signed in as <strong><!--%= current_user.name %></strong>!-->
     <% if current_fbuser %>-
       Signed in as <strong><%= current_fbuser.name %></strong>
+      <!--%= current_user = current_fbuser %>-->
+      <!--%= @user = @fbuser %>-->
       <%= link_to "Sign out", signout_path, id: "sign_out" %>
     <% else %>
       <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
